@@ -1,0 +1,14 @@
+{
+  "name": "cd/content",
+  "title": "CD Content",
+  "description": "The content area for pages.",
+  "category": "cd-templates",
+  "icon": "align-center",
+  "supports": {
+    "align": false
+  },
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "content.php"
+  }
+}

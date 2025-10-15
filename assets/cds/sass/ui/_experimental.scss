@@ -1,0 +1,198 @@
+// CDS Component: UI Experimental Features (pairs with cds_experimental.js)
+// ---------------------------------------------------------------------------
+// 01. Dynamic Table of Contents
+// 02. "Copy Code" Button
+
+
+// Dynamic Table of Contents
+
+.page-toc {
+	@extend .lnum;
+	float: left;
+	clear: both;
+	width: 100%;
+	padding: 0 0 3em;
+	margin-bottom: 3em;
+	border-bottom: 1px solid #ebebeb;
+}
+.page-toc ol {
+	margin: 0;
+	color: #999;
+}
+.page-toc > ol {
+	border-left: 3px solid #3787b0;
+	padding: 1px 0 4px 50px;
+	list-style-type: upper-roman;
+}
+.secondary .page-toc > ol {
+	border-left: 3px solid #ededed;
+	padding: 1px 0 4px 34px;
+}
+.page-toc ol ol {
+	border: 0;
+	padding: 1px 0 4px 18px;
+	margin: 2px 0;
+	list-style-type: decimal;
+}
+.page-toc ol ol ol {
+	list-style-type: lower-alpha;
+}
+.page-toc li {
+	font-size: 16px;
+	font-weight: 500;
+	background: none;
+	margin: 0;
+	padding: 0.6em 0;
+}
+.secondary .page-toc li {
+	font-size: 14px;
+	padding: 0.3em 0;
+}
+.page-toc a, .page-toc a small {
+	text-decoration: none;
+}
+.page-toc a .deco {
+	text-decoration: underline;
+}
+/* suppress ordered list numbering ------- */
+/* -- may later become a toggled option --
+.page-toc ol {
+	padding-left: 30px;
+}
+.page-toc li {
+	list-style: none;
+} */
+/* --------------------------------------- */
+.back-to-toc {
+	@extend .icon-fa;
+	float: right;
+	text-decoration: none;
+	position: relative;
+	background: #ebebeb;
+	padding: 0 4px;
+}
+.back-to-toc:hover, .back-to-toc:focus {
+	text-decoration: none;
+}
+.back-to-toc:before {
+	content: '\f062';
+}
+h2 + .back-to-toc, .h2 + .back-to-toc {
+	margin-top: -48px;
+}
+h3 + .back-to-toc, .h3 + .back-to-toc {
+	margin-top: -42px;
+}
+h4 + .back-to-toc, .h4 + .back-to-toc {
+	margin-top: -42px;
+}
+.toc {
+	clear: both;
+	padding-right: 30px;
+}
+
+
+// "Copy Code" Button
+
+button.button-copy {
+	-webkit-appearance: none;
+	appearance: none;
+	background: #f3f3f3;
+	color: #444;
+	border: 1px solid #666;
+	border-radius: 2px;
+	padding: 0;
+	margin: -0.1em 0.1em;
+	width: 24px;
+	height: 22px;
+	//font-family: $cwd-font-family-sans-ui;
+	cursor: pointer;
+	transition: background .1s;
+	font-size: 14px;
+	line-height: 1;
+	
+	@extend .icon-zmdi;
+	
+	&:before {
+		content: '\f237';	
+	}
+	&:hover, &:focus {
+		background: #f7f7f7;
+		border-color: #000;
+		color: #000;
+	}
+	&:active {
+		background: #fff;
+		border-color: #888;
+		color: #666;
+	}
+	
+	&.enabled {
+		position: absolute;
+		transform: translate(-20px, -9px);
+		box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+		
+		@media (max-width: 767px) {
+			display: none;
+		}
+		
+		& + .code-copy {
+			outline: 3px double rgba(0,0,0,0);
+			outline-offset: 5px;
+			transition: none;
+		}
+		&:hover + .code-copy {
+			outline: 3px double rgba(0,0,0,0.35);
+			outline-offset: 5px;
+			transition: outline-color 0.15s;
+		}
+		&:active + .code-copy {
+			outline: 3px double rgba(0,0,0,0.9);
+			outline-offset: 5px;
+			transition: outline-color 0.15s;
+		}
+		
+		&.right {
+			position: relative;
+			float: right;
+			transform: translate(-10px, -9px);
+			margin-right: -24px;
+		}
+	}
+	
+	&:after {
+		font: normal normal normal 14px/1 'Material-Design-Iconic-Font';
+		font-size: inherit;
+		speak: never;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		content: '';
+		color: #fff;
+		background: #222222;
+		font-size: 16px;
+		width: 1.5em;
+		height: 1.5em;
+		line-height: 1.5;
+		text-align: center;
+		border-radius: 100%;
+		position: absolute;
+		transform: translate(-3px, -20px);
+		opacity: 0;
+		display: none;
+		
+	}
+	&.success:after {
+		background: #008800;
+		content: '\f108';
+		opacity: 1;
+		display: inline-block;
+	}
+	&.failure:after {
+		background: #cc0000;
+		content: '\f1f2';
+		opacity: 1;
+		display: inline-block;
+	}
+	
+}

@@ -1,0 +1,14 @@
+{
+  "name": "cd/footer",
+  "title": "CD Site Footer",
+  "description": "A customizable site footer used in theme templates.",
+  "category": "cd-templates",
+  "icon": "table-row-before",
+  "supports": {
+    "align": false
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "footer.php"
+  }
+}

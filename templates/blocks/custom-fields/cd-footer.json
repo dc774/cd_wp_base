@@ -1,0 +1,134 @@
+{
+  "key": "group_687a91e98add5",
+  "title": "cd-footer",
+  "fields": [
+    {
+      "key": "field_687a91e90e2d5",
+      "label": "Background Color",
+      "name": "color",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "Dark": "Dark",
+        "Light": "Light",
+        "Red": "Red"
+      },
+      "default_value": "Dark",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_null": 0,
+      "allow_in_bindings": 0,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": "",
+      "create_options": 0,
+      "save_options": 0
+    },
+    {
+      "key": "field_688a785a63cc0",
+      "label": "Web Accessibility Contact Option",
+      "name": "accessibility_contact_option",
+      "aria-label": "",
+      "type": "radio",
+      "instructions": "Please choose your method of providing Web Accessibility Assistance to users of your site. Find more information <a href=\"https:\/\/it.cornell.edu\/accessibility\/web-accessibility-footer\" target=\"_blank\">here<\/a>.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "link": "Page Link",
+        "sentence": "Sentence with Email"
+      },
+      "default_value": "link",
+      "return_format": "value",
+      "allow_null": 0,
+      "other_choice": 0,
+      "allow_in_bindings": 0,
+      "layout": "vertical",
+      "save_other_choice": 0
+    },
+    {
+      "key": "field_688b8979349a0",
+      "label": "Web Accessibility Contact Email",
+      "name": "contact_email",
+      "aria-label": "",
+      "type": "email",
+      "instructions": "",
+      "required": 1,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_688a785a63cc0",
+            "operator": "==",
+            "value": "sentence"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_687a920e0e2d6",
+      "label": "Web Accessibility Page Link",
+      "name": "page_link",
+      "aria-label": "",
+      "type": "link",
+      "instructions": "This should be an internal page with Web Accessibility contact information per <a href=\"https:\/\/it.cornell.edu\/accessibility\/web-accessibility-footer\" target=\"_blank\">these instructions<\/a>.",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_688a785a63cc0",
+            "operator": "==",
+            "value": "link"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "url",
+      "allow_in_bindings": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "cd\/footer"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1754057265
+}

@@ -1,0 +1,149 @@
+// CDS Component: UI Modal Dialog
+// ---------------------------------------------------------------------------
+
+
+dialog.ui-modal {
+	$modal: &;
+	
+	&::backdrop {
+		display: none; // replaced by .dialog-container
+	}
+	
+	&[aria-modal='true'] {
+		display: none;
+		position: fixed;
+		margin: auto;
+		padding: 0;
+		background: #fff;
+		border: 1px solid #333;
+		box-shadow: 0 0 15px rgba(#000,0.15);
+		outline: 0;
+		width: fit-content;
+		height: fit-content;
+		max-width: calc((100% - 6px) - 1em);
+		max-height: calc((100% - 6px) - 1em);
+		min-width: 300px;
+		min-height: 155px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		
+		@media (min-width: 360px) {
+			min-width: 350px;
+			min-height: 175px;
+		}
+		@media (min-width: 412px) {
+			max-width: calc((100% - 6px) - 2em);
+			max-height: calc((100% - 6px) - 2em);
+		}
+		@media (min-width: 768px) {
+			min-width: 640px;
+			min-height: 240px;
+		}
+		
+		.dark & { background: #333; border-color: #4b4b4b; box-shadow: 0 0 15px rgba(#000,0.25); }
+	}
+	
+	&[open], &.open {
+		display: block;
+	}
+	
+	&[inert] {
+		// @TODO can this be patched for older browsers?
+	}
+	
+	& > .container {
+		max-width: 800px;
+		padding: 15px;
+		
+		@media (min-width: 768px) {
+			padding: 30px;
+		}
+	}
+	
+	button.dialog-close {
+		display: block;
+		background-image: url('../images/ui/dialog/icon_close_10_white.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 28px;
+		height: 28px;
+		padding: 0;
+		margin: 0 0 8px auto;
+		
+		@media (min-width: 768px) {
+			margin: -5px -5px 8px auto;
+		}
+		
+		&.light-gray, 
+		&.medium-gray {
+			background-image: url('../images/ui/dialog/icon_close_10.svg'); // black icon over light backgrounds
+		}
+	}
+	&.inline-close button.dialog-close {
+		margin-left: 24px;
+		float: right;
+		
+		@media (min-width: 768px) {
+			margin: 0 0 5px auto;
+		}
+		
+		& + * {
+			margin-top: -1px;
+			
+			@media (min-width: 768px) {
+				margin-top: -4px;
+			}
+			
+			& > :first-child {
+				margin-bottom: 30px;
+				
+				@media (min-width: 768px) {
+					margin-bottom: 40px;
+				}
+			}
+		}
+	}
+	
+	
+	.dialog-actions {
+		text-align: right;
+		margin: 4em 0 3px;
+		
+		@media (min-width: 768px) {
+			margin-bottom: 0;
+		}
+		
+		button {
+			min-width: 6em;
+			margin-left: 0.2em;
+		}
+	}
+}
+
+.dialog-container {
+	opacity: 0;
+	transition: opacity 0.1s;
+	pointer-events: none;
+		
+	&.open {
+		background: rgba(#111,0.5);
+		opacity: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 9999;
+		pointer-events: auto;
+		
+		.dark & { background: rgba(#111,0.7); }
+		
+		&.blur {
+			-webkit-backdrop-filter: blur(2px);
+			backdrop-filter: blur(2px);
+		}
+	}
+}

@@ -1,0 +1,510 @@
+// CDS Component: UI Accordions (HTML <details> Tag)
+// ---------------------------------------------------------------------------
+// 01. Basic Accordions
+// 02. Accordion Style: Compact
+// 03. Accordion Style: Classic
+// 04. Accordion Style: Simple
+// 05. Accordion Style: Expanding Menu
+// 06. Grouped Accordions (with "expand all" toggle)
+// 07. Expanding Navigation for Mobile
+
+
+// Basic Accordions
+
+@keyframes details-reveal {
+	0%   { opacity: 0; transform: translateY(-8px); }
+	100% { opacity: 1; transform: none; }
+}
+
+details {
+	$details: &;
+	
+	clear: both;
+	overflow: hidden;
+	padding: 10px 15px 11px 15px;
+	margin: 0 -15px 2px;
+	transition: background-color 0.15s;
+	
+	@media (min-width: 1024px) {
+		padding: 15px 20px 18px 20px;
+		margin: 0 -20px 2px;
+	}
+	
+	body > &, 
+	#cu-header > & {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	
+	summary {
+		font-weight: 600;
+		cursor: pointer;
+		list-style: none;
+		padding-left: 29px;
+		margin-bottom: 1.25em;
+		position: relative;
+		overflow: hidden;
+		
+		// Note: disabling text select is not ideal, but the summary acts like a button and it is awkward how easily it becomes selected from clicking too quickly.
+		// However, by applying it only to focus, it remains possible to select the text when it is not focused (i.e., selecting a range of text that includes the summary).
+		&:focus {
+			-webkit-user-select: none;
+			user-select: none;
+		}
+		
+		&:after {
+			content: '';
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			top: calc(1em - 14px);
+			left: 0;
+			background: url('../images/ui/accordion/icon_minus_o_20_red.svg') 0 -9999em no-repeat, // preload open
+			            url('../images/ui/accordion/icon_plus_o_20.svg') 0 0 no-repeat; // default closed
+			opacity: 0.6;
+			transition: opacity 0.15s;
+			
+			.dark & {
+				opacity: 0.5;
+				background: url('../images/ui/accordion/icon_minus_o_20_white.svg') 0 -9999em no-repeat, // preload open (dark)
+				            url('../images/ui/accordion/icon_plus_o_20_white.svg') 0 0 no-repeat; // default closed (dark)
+			}
+		}
+		
+		&:hover:after {
+			opacity: 1;
+			
+			.dark & { opacity: 0.75; }
+		}
+		
+		&::-webkit-details-marker {
+			display: none;
+		}
+		&::marker {
+			display: none;
+		}
+	}
+	
+	&:not([open]) summary {
+		margin-bottom: 0;
+	}
+	
+	&[open], &.hovering {
+		background: rgba(#aaa, 0.09); // #f7f7f7
+		
+		details {
+			background: none;
+		}
+	}
+	&[open] {
+		.animate {
+			animation: opacity-fade-in 0.2s linear 0.2s;
+			animation-fill-mode: backwards;
+			
+			&.slide-down {
+				animation: details-reveal 0.3s ease-in-out 0.2s;
+				animation-fill-mode: backwards;
+			}
+		}
+		
+		& > summary:after {
+			opacity: 1;
+			background: url('../images/ui/accordion/icon_minus_o_20_red.svg') 0 0 no-repeat; // open
+			
+			.dark & {
+				opacity: 0.75;
+				background: url('../images/ui/accordion/icon_minus_o_20_white.svg') 0 0 no-repeat; // open (dark)
+			}
+		}
+	}
+	& > details {
+		margin-left: 0 !important;
+	}
+	
+	
+	// Accordion Style: Compact
+	&.compact, .accordion-set.compact & {
+		@extend .small;
+		padding: 7px 15px 8px 17px;
+		margin: 0 -15px 2px;
+		
+		summary {
+			padding-left: 24px;
+			margin-bottom: 0.75em;
+		
+			&:after {
+				width: 13px;
+				height: 13px;
+				top: calc(1em - 10px);
+				background: url('../images/ui/accordion/icon_minus_13_red.svg') 0 -9999em no-repeat, // preload open
+										url('../images/ui/accordion/icon_plus_13.svg') 0 0 no-repeat; // default closed
+				opacity: 0.5;
+			
+				.dark & {
+					opacity: 0.5;
+					background: url('../images/ui/accordion/icon_minus_13_white.svg') 0 -9999em no-repeat, // preload open (dark)
+											url('../images/ui/accordion/icon_plus_13_white.svg') 0 0 no-repeat; // default closed (dark)
+				}
+			}
+			
+			&:hover:after {
+				opacity: 1;
+				
+				.dark & { opacity: 0.75; }
+			}
+		}
+		&:not([open]) summary {
+			margin-bottom: 0;
+		}
+		&[open] > summary:after {
+			opacity: 1;
+			background: url('../images/ui/accordion/icon_minus_13_red.svg') 0 0 no-repeat; // open
+		
+			.dark & {
+				opacity: 0.75;
+				background: url('../images/ui/accordion/icon_minus_13_white.svg') 0 0 no-repeat; // open (dark)
+			}
+		}
+		
+		.details-content {
+			margin-bottom: 7px;
+			
+			@media (min-width: 1024px) {
+				padding-left: 22px;
+			}
+		}
+	}
+	
+	
+	// Classic Style (and the basis for Simple Style)
+	&.classic, .accordion-set.classic &, 
+	&.simple, .accordion-set.simple & {
+		@extend .small;
+		padding: 10px 15px 13px 15px;
+		margin: 8px 0;
+		border: 1px solid #d9d9d9;
+		
+		.dark & { border-color: rgba(#fff,0.25); }
+		
+		@media (min-width: 1024px) {
+			padding: 13px 20px 16px 20px;
+		}
+		
+		summary {
+			font-weight: normal;
+			padding: 10px 42px 11px 15px;
+			margin: -10px -15px -13px -15px;
+			background: none;
+			outline-offset: -6px;
+			
+			&:after {
+				background: url('../images/ui/accordion/icon_chevron_red_16.svg') no-repeat;
+				left: auto;
+				top: calc(50% - 11px);
+				right: 12px;
+				opacity: 1;
+				
+				.dark & { background-image: url('../images/ui/accordion/icon_chevron_white_16.svg'); opacity: 0.85; }
+				
+				&:hover {
+					opacity: 1;
+				}
+			}
+			
+			@media (min-width: 1024px) {
+				padding: 13px 48px 13px 20px;
+				margin: -13px -20px -17px -20px;
+				
+				&:after {
+					right: 16px;
+				}
+			}
+		}
+		
+		&[open] {
+			background-color: rgba(#aaa, 0.04);
+			
+			& > summary {
+				background-color: rgba(#aaa, 0.09);
+				margin-bottom: 1em;
+				
+				&:after {
+					transform: rotate(180deg);
+				}
+				
+				&:hover {
+					background-color: rgba(#aaa, 0.15);
+				}
+				&:active {
+					background-color: rgba(#aaa, 0.2);
+				}
+			}
+		}
+		details.hovering:not([open]) {
+			background: rgba(#aaa, 0.09);
+		}
+	}
+	
+	
+	// Accordion Style: Simple
+	&.simple, .accordion-set.simple & { // starts from .classic style
+		border-width: 1px 0;
+		padding: 18px 15px 21px 15px;
+		
+		& + details {
+			border-top-color: transparent !important;
+			margin-top: -8px;
+		}
+		summary {
+			padding: 18px 42px 19px 16px;
+			margin: -18px -15px -21px -15px;
+			
+			&:after {
+				background-image: url('../images/ui/accordion/icon_chevron_thin.svg');
+				
+				.dark & { background-image: url('../images/ui/accordion/icon_chevron_thin_white.svg'); }
+			}
+		}
+		&[open], &[open] summary {
+			background: none !important;
+		}
+		&.hovering[open] {
+			transition: none;
+		}
+	}
+	
+	
+	// Accordion Style: Expanding Menu
+	&.menu {
+		margin-bottom: 1em;
+		
+		nav, nav.vertical > ul {
+			margin-bottom: 0;
+		}
+				
+		summary {
+			padding-left: 32px;
+			font-weight: 500;
+			
+			&:after {
+				background: url('../images/ui/accordion/icon_close_12.svg') 0 -9999em no-repeat, // preload open
+				            url('../images/ui/accordion/icon_veggieburger_12.svg') center no-repeat; // default closed
+				background-color: rgba(#000, 0.06);
+				width: 23px;
+				height: 21px;
+				opacity: 1 !important;
+				
+				.dark & {
+					background: url('../images/ui/accordion/icon_close_12_white.svg') 0 -9999em no-repeat, // preload open
+			  	            url('../images/ui/accordion/icon_veggieburger_12_white.svg') center no-repeat; // default closed
+					background-color: rgba(#aaa, 0.15);
+				}
+				
+				@media (min-width: 1024px) {
+					top: calc(1em - 15px);
+				}
+			}
+		}
+		
+		&[open] {			
+			& > summary {	
+				&:after {
+					background: rgba(#000, 0.08) url('../images/ui/accordion/icon_close_12.svg') center no-repeat; // open
+					
+					.dark & {
+						background: rgba(#aaa, 0.15) url('../images/ui/accordion/icon_close_12_white.svg') center no-repeat; // open
+					}
+				}
+			}
+		}
+		
+		&.hovering.no-background:not([open]) {
+			background: rgba(#aaa, 0.09) !important; // #f7f7f7
+		}
+		&.hovering.no-background[open] {
+			transition: none;
+		}
+	}
+	
+	
+	// Optional inner container accent
+	.details-content {
+		padding: 0 0 0 15px;
+		border-left: 2px solid #b31b1b;
+		
+		.dark & { border-color: rgba(#fff,0.5); }
+	
+		@media (min-width: 1024px) {
+			padding-left: 28px;
+		}
+	}
+	
+}
+
+
+// Grouped Accordions (with "expand all" toggle)
+.accordion-set {
+	
+	button.expand-all {
+		@extend .soft;
+		background: none;
+		padding: 1px 10px 1px 8px;
+		margin: 0 0 5px -8px;
+		font-size: 16px;
+		text-align: left;
+		min-width: 102px;
+		border-radius: 2px;
+		transition: color 0.15s, background 0.15s;
+		
+		&:before {
+			@extend .icon-zmdi;
+			content: '\f246';
+			@extend .dim;
+			margin-right: 0.42em;
+			position: relative;
+			top: 0.05em;
+			left: 1px;
+			transition: color 0.15s;
+		}
+		
+		&:hover {
+			color: inherit;
+			background: rgba(#aaa,0.12);
+			transition: color 0.15s, background 0.15s;
+			
+			&:before {
+				@extend .soft;
+			}
+		}
+		&:active, &:active:hover {
+			@extend .dim;
+			background: rgba(#aaa,0.08);
+			transition: none;
+			
+			&:before {
+				@extend .dim;
+				transition: none;
+			}
+		}
+	}
+}
+
+
+// Expanding Navigation for Mobile
+// -- Activated by JavaScript on elements with the .mobile-expander class (typically a <nav> tag)
+// -- This accordion-style element does not use the <details> tag, so it can be controlled to apply only at mobile sizes
+.mobile-menu {
+	display: flex;
+	
+	@media (max-width: 959px) {
+		margin: 8px 0 15px;
+		
+		@media (min-width: 767px) {
+			div.sidebar & {
+				margin: 8px 0 15px;
+			}
+		}
+	}
+}
+.expander-content {
+	@media (max-width: 959px) {
+		display: none;
+		
+		@media (min-width: 767px) {
+			div.sidebar & {
+				display: block;
+			}
+		}
+	
+		&.open {
+			display: block;
+		
+			&.animate {
+				animation: opacity-fade-in 0.2s linear 0.2s;
+				animation-fill-mode: backwards;
+			
+				&.slide-down {
+					animation: details-reveal 0.3s ease-in-out 0.2s;
+					animation-fill-mode: backwards;
+				}
+			}
+		
+			.menu-block-title {
+				margin-top: 0.5em;
+			}
+		}
+	}
+}
+.mobile-menu-toggle {
+	width: 100%;
+	width: -webkit-fill-available;
+	width: -moz-available;
+	width: fill-available;
+	font: inherit;
+	font-weight: 600;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	border: 0;
+	margin: 0 -15px;
+	padding: 10px 15px 10px 44px;
+	background: transparent;
+	cursor: pointer;
+	vertical-align: middle;
+	text-align: left;
+	position: relative;
+	
+	&:after {
+		content: '';
+		width: 23px;
+		height: 21px;
+		position: absolute;
+		top: calc(1em - 4px);
+		left: 15px;
+		background: url('../images/ui/accordion/icon_close_12.svg') 0 -9999em no-repeat, // preload open
+		            url('../images/ui/accordion/icon_veggieburger_12.svg') center no-repeat; // default closed
+		background-color: rgba(#000, 0.06);
+		
+		.dark & {
+			background: url('../images/ui/accordion/icon_close_12_white.svg') 0 -9999em no-repeat, // preload open (dark)
+			            url('../images/ui/accordion/icon_veggieburger_12_white.svg') center no-repeat; // default closed (dark)
+			background-color: rgba(#aaa, 0.15);
+		}
+		
+		@media (min-width: 1024px) {
+			top: calc(1em - 15px);
+		}
+	}
+	
+	&:hover, &:focus {
+		background: rgba(#aaa, 0.09); // #f7f7f7
+	}
+	
+	&.open {
+		
+		&:after {
+			background: rgba(#000, 0.08) url('../images/ui/accordion/icon_close_12.svg') center no-repeat; // open
+			
+			.dark & {
+				background: rgba(#aaa, 0.15) url('../images/ui/accordion/icon_close_12_white.svg') center no-repeat; // open
+			}
+		}
+	}
+	
+	body > &, 
+	body > div:not(.container) > &, 
+	#main-article > &, 
+	#main-article > div:not(.container) > & {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	@media (min-width: 768px) {
+		div.sidebar & {
+			display: none;
+		}
+	}
+	@media (min-width: 960px) {
+		display: none;
+	}
+}
+

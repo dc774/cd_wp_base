@@ -1,0 +1,100 @@
+// CDS Component: Drupal/WordPress CMS Elements
+// ---------------------------------------------------------------------------
+// 01. Utility
+// 02. Pagination
+// 03. WordPress Advanced Custom Fields (ACF)
+
+
+// Utility
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	clip-path: inset(50%);
+	border: 0;
+}
+
+
+// Pagination
+
+.pager {
+	@extend .lnum;
+	@extend .small;
+	margin: 1.5em 0;
+	line-height: 1;
+	
+	ul {
+		display: flex;
+		list-style: none;
+		padding: 0;
+		margin: 0 -2px;
+	}
+	li {
+		padding: 2px;
+		margin: 0;
+		text-align: center;
+		
+		&.pager__item--ellipsis {
+			padding: 0.25em 0.6em 0.28em;
+		}
+		.page-numbers.dots {
+			display: block;
+			padding: 0.2em 0.5em 0.28em;
+		}
+		
+		a, .page-numbers:not(.dots) {
+			text-decoration: none;
+			display: block;
+			min-width: 2em;
+			padding: 0.35em 0.6em 0.38em;
+			background: rgba(#b6b6b6, 0.14);
+			color: #000;
+			
+			.dark & { color: #fff; }
+		}
+		a, a.page-numbers:not(.dots) {
+			&:hover, &:focus {
+				color: #000;
+				text-decoration: underline;
+				background: rgba(#b6b6b6, 0.22);
+				
+				.dark & { color: #fff; }
+			}
+			&:active {
+				color: #666;
+				text-decoration: underline;
+				background: rgba(#b6b6b6, 0.1);
+				
+				.dark & { color: #ccc; }
+			}
+		}
+		
+		&.is-active a, 
+		.page-numbers.current {
+			background: #006699;
+			color: #fff;
+		}
+	}
+}
+
+
+// WordPress Advanced Custom Fields (ACF)
+
+.region-sidebar {
+	div.acf-innerblocks-container, 
+	div.block-editor-block-list__block:not(.sidebar):not(.article), 
+	div.wp-block-template-part:not(.sidebar):not(.article) {
+		display: contents;
+	
+		h1:last-child {
+			margin-bottom: 0.5em;
+		}
+	}
+}
+
+

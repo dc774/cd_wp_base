@@ -1,0 +1,118 @@
+// CDS Component: Callouts
+// ---------------------------------------------------------------------------
+// 01. Simple Callout
+// 02. 
+
+
+// Simple Callout
+.block-callout {
+	display: flex;
+	flex-direction: column;
+	margin: 0 -15px 0.5em;
+	padding: 1em 0;
+	
+	.callout-photo {
+		padding: 0 15px;
+		margin-bottom: 1em;
+		
+		.adaptive-photo {
+			position: relative;
+			padding-bottom: 56%;
+		}
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: 50% 25%;
+		}
+	}
+	.callout-message {
+		padding: 0 15px;
+		margin-bottom: 1em;
+		flex-grow: 10;
+		position: relative;
+	}
+	h2, h3 {
+		
+		&:after {
+			content: '';
+			display: block;
+			width: 50px;
+			margin: 0.8em 0 0 1px;
+			@extend .red-border;
+			border-bottom-width: 3px;
+			border-bottom-style: solid;
+		}
+	}
+	.badge {
+		@extend .tint-medium, .bordered, .mini, .sans, .all-small-caps;
+		display: inline-block;
+		padding: 0 0.4em 0.1em;
+		vertical-align: super;
+	}
+	
+	@media (min-width: 768px) {
+		flex-direction: row;
+		
+		.callout-photo {
+			width: 40%;
+			max-width: 300px;
+			padding-bottom: 0;
+			
+			.adaptive-photo {
+				padding-bottom: 100%;
+			}
+		}
+		.callout-message {
+			width: 60%;
+		}
+	}
+	
+	
+	// Fine-tuned when @container and :has() are supported
+	
+	div:has(> &) {
+		container-type: inline-size;
+	}
+	
+	@container (max-width: 345px) {
+		& > * {
+			font-size: 15px;
+		}
+	}
+	@container (max-width: 600px) {
+		flex-direction: column;
+		
+		.callout-photo {
+			width: 100%;
+			max-width: none;
+			
+			.adaptive-photo {
+				padding-bottom: 56%;
+			}
+		}
+		.callout-message {
+			width: 100%;
+		}
+	}
+	
+	@container (min-width: 800px) {
+		.callout-message {
+			padding-left: calc(15px + 1%);
+		}
+	}
+	@container (min-width: 900px) {
+		.callout-photo {
+			width: 50%;
+			max-width: none;
+			
+			.adaptive-photo {
+				padding-bottom: 56%;
+			}
+		}
+		.callout-message {
+			padding-left: calc(15px + 2%);
+		}
+	}
+}

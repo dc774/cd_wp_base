@@ -1,0 +1,14 @@
+{
+  "name": "cd/sidebar-top",
+  "title": "CD Sidebar Top",
+  "description": "The primary sidebar area for pages. Appears above the main content on mobile devices.",
+  "category": "cd-templates",
+  "icon": "align-pull-left",
+  "supports": {
+    "align": false
+  },
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "sidebar-top.php"
+  }
+}

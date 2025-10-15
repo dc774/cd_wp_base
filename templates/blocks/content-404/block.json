@@ -1,0 +1,14 @@
+{
+  "name": "cd/content-404",
+  "title": "CD 404 Content",
+  "description": "The content area for the 404 Error Page.",
+  "category": "cd-templates",
+  "icon": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='square' stroke-linejoin='miter' aria-hidden='true'><path d='M1 3H23'/><path d='M23 21H1'/><path d='M1 3V21'/><path d='M23 3V21'/><path d='M1 7H23'/><path d='M9.6 12L14.4 18'/><path d='M14.4 12L9.6 18'/></svg>",
+  "supports": {
+    "align": false
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "content-404.php"
+  }
+}

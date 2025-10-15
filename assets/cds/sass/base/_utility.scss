@@ -1,0 +1,259 @@
+// CDS Component: Utility Classes
+// ---------------------------------------------------------------------------
+// 01. Accessibility
+// 02. General Utility Classes
+// 03. Flexbox
+// 04. Icon Fonts
+// 05. Animation
+// 06. Documentation and Debugging
+
+
+// Accessibility
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	clip-path: inset(50%);
+	border: 0;
+}
+.unset-sr-only {
+	position: unset;
+	width: unset;
+	height: unset;
+	margin: unset;
+	padding: unset;
+	overflow: unset;
+	clip: unset;
+	clip-path: unset;
+	border: unset;
+}
+.mobile-only {
+	@media (min-width: 960px) {
+		display: none !important;
+	}
+}
+.desktop-only {
+	@media (max-width: 959px) {
+		display: none !important;
+	}
+}
+#skipnav {
+	position: absolute;
+	top: 10px;
+	left: 15px;
+	z-index: 5;
+	
+	a {
+		background: #006699;
+		color: #fff !important;
+		padding: 2px 8px;
+		text-decoration: none !important;
+		white-space: nowrap;
+		position: absolute;
+		left: -1000em;
+		
+		&:focus {
+			left: 0;
+		}
+	}
+}
+.aria-target:focus, .custom-focus:focus, #content {
+	outline: none;
+}
+
+
+// General Utility Classes
+
+.display-block {
+	display: block !important;
+}
+.inline-block {
+	display: inline-block !important;
+}
+.inline {
+	display: inline !important;
+}
+.clear {
+	clear: both !important;
+}
+.invisible {
+	visibility: hidden;
+}
+.relative {
+	position: relative;
+}
+.space-left {
+	margin-left: 0.25em !important;
+}
+.space-right {
+	margin-right: 0.25em !important;
+}
+.round {
+	border-radius: 100em;
+}
+.curved {
+	border-radius: 6px;
+}
+.squared {
+	border-radius: 0 !important;
+}
+.framed {
+	border: 4px solid #fff;
+}
+.no-border {
+	border: 0 !important;
+}
+.no-background, .no-bg {
+	background: none !important;
+}
+.no-padding {
+	padding: 0 !important;
+}
+.tint, .tint-light {
+	background: rgba(#aaa, 0.09); // #f7f7f7;
+}
+.tint-medium {
+	background: rgba(#aaa, 0.18);
+}
+.tint-dark {
+	background: rgba(#aaa, 0.36);
+}
+.shadow-light {
+	box-shadow: 0 0 0.2em rgba(#000,0.15);
+}
+.shadow, .shadow-medium {
+	box-shadow: 0 0 0.5em rgba(#000,0.2);
+}
+.shadow-dark {
+	box-shadow: 0 0 0.6em rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+.stunt-double { /* This bold and fearless daredevil is used as a second target for multiple backgrounds and other tricks */
+	background: none; // Born of a shadowy past...
+	pointer-events: none; // Impossible to pin down...
+	position: absolute; // Unshakably resolute...
+	top: 0; // ...and top of his .class at the academy!
+	height: 100%; // Tall in stature...
+	width: 100%; // ...wide of vision!
+}
+.stunt-double-lite {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	display: block;
+}
+
+// Flexbox
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+.flex-stretch {
+	display: flex;
+	align-items: stretch;
+}
+.flex-between {
+	display: flex;
+	justify-content: space-between;
+}
+.flex-vertical-align, .vertical-align {
+	display: flex;
+	align-items: center;
+}
+.flex-dom-reverse, .flex-col-reverse {
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: flex-start;
+}
+.flex-row-reverse {
+	display: flex;
+	flex-direction: row-reverse;
+}
+.flex-nowrap, .flex-grow {
+	display: flex;
+	flex-wrap: nowrap;
+}
+.flex-grow > * {
+	flex-grow: 1;
+}
+.flex-end {
+	align-self: flex-end;
+}
+.flex-duo {
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: -10px;
+	margin-right: -10px;
+	
+	& > * {
+		min-width: 33%;
+		padding: 0 10px;
+		
+		@media (min-width: 1200px) {
+			min-width: 25%;
+		}
+	}
+}
+
+
+// Icon Fonts
+.icon-fa:before, .icon-fa:after {
+	font: normal normal normal 14px/1 FontAwesome; // FontAwesome 4
+	font-size: inherit;
+	speak: never;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.icon-zmdi:before, .icon-zmdi:after {
+	display: inline-block;
+	font: normal normal normal 14px/1 'Material-Design-Iconic-Font'; // Material Design Iconic
+	font-size: inherit;
+	speak: never;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+// Animation
+@keyframes opacity-fade-in {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes opacity-fade-out {
+	0%   { opacity: 1; }
+	100% { opacity: 0; }
+}
+
+
+// Documentation and Debugging
+dom-hidden, .dom-hidden {
+	display: none !important;
+}
+.bear {
+	color: #8b4500;
+	font-weight: 600;
+	
+	.dark & { color: #fff }
+	
+	&:before {
+		content: '\1f43b';
+		margin-right: 0.15em;
+		
+		.dark & { content: '\1f43c'; }
+	}
+}
+.header-emblem:before {
+	@extend .icon-fa;
+	content: '\f02e';
+	padding-right: 0.4em;
+	opacity: 0.5;
+}
+

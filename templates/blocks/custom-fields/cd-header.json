@@ -1,0 +1,200 @@
+{
+  "key": "group_686fbee1c41ad",
+  "title": "cd-header",
+  "fields": [
+    {
+      "key": "field_686fc02d8d1a6",
+      "label": "Banner Layout",
+      "name": "header_layout",
+      "aria-label": "",
+      "type": "radio",
+      "instructions": "Should the banner and hero image be stacked, or should the image be used as a background with the banner overlaid on top of it? Please note: if \"overlay\" is selected, the banner will use a dark gray background.",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "stacked": "Stacked",
+        "overlay": "Overlay"
+      },
+      "default_value": "",
+      "return_format": "value",
+      "allow_null": 0,
+      "other_choice": 0,
+      "allow_in_bindings": 0,
+      "layout": "vertical",
+      "save_other_choice": 0
+    },
+    {
+      "key": "field_686fbee1608e6",
+      "label": "Banner Color",
+      "name": "header_color",
+      "aria-label": "",
+      "type": "radio",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_686fc02d8d1a6",
+            "operator": "!=",
+            "value": "overlay"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "white": "White",
+        "tint": "Light Gray",
+        "dark-gray": "Dark Gray",
+        "black": "Black",
+        "red": "Red"
+      },
+      "default_value": "",
+      "return_format": "value",
+      "allow_null": 0,
+      "other_choice": 0,
+      "allow_in_bindings": 0,
+      "layout": "vertical",
+      "save_other_choice": 0
+    },
+    {
+      "key": "field_686fbf868d1a4",
+      "label": "Cornell Seal Position",
+      "name": "header_seal_position",
+      "aria-label": "",
+      "type": "button_group",
+      "instructions": "On desktop, should the Cornell seal be located on the left or right side of the banner? The site name (and tagline, if included) will be displayed on the other side.",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "left": "Left",
+        "right": "Right"
+      },
+      "default_value": "left",
+      "return_format": "value",
+      "allow_null": 0,
+      "allow_in_bindings": 0,
+      "layout": "horizontal"
+    },
+    {
+      "key": "field_686fbfe18d1a5",
+      "label": "",
+      "name": "header_mini_seal",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "If this option is selected, the Cornell seal will display a reduced version in the top bar on mobile. Otherwise the desktop version of the seal will be displayed in the main banner area above the site name.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "Use mini Cornell seal on mobile",
+      "default_value": 1,
+      "allow_in_bindings": 0,
+      "ui": 0,
+      "ui_on_text": "",
+      "ui_off_text": ""
+    },
+    {
+      "key": "field_686fc0dd8d1a7",
+      "label": "Banner Image(s)",
+      "name": "header_theme_images",
+      "aria-label": "",
+      "type": "checkbox",
+      "instructions": "This image will be used as the default banner image across the site, and can be overridden on individual pages and sections. If multiple images are selected here, one will be displayed at random every time a user visits a page.",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": "header-banner-image-field"
+      },
+      "choices": {
+        "plantations": "<img src=\"\/wp-content\/themes\/cd_wp_base\/cd-wp-base\/assets\/cds\/images\/slider\/plantations.jpg\">",
+        "campus": "<img src=\"\/wp-content\/themes\/cd_wp_base\/cd-wp-base\/assets\/cds\/images\/slider\/campus.jpg\">",
+        "campus2": "<img src=\"\/wp-content\/themes\/cd_wp_base\/cd-wp-base\/assets\/cds\/images\/slider\/campus2.jpg\">",
+        "campus3": "<img src=\"\/wp-content\/themes\/cd_wp_base\/cd-wp-base\/assets\/cds\/images\/slider\/campus3.jpg\">",
+        "campus4": "<img src=\"\/wp-content\/themes\/cd_wp_base\/cd-wp-base\/assets\/cds\/images\/slider\/campus4.jpg\">",
+        "custom": "Custom Image(s)"
+      },
+      "default_value": ["plantations"],
+      "return_format": "value",
+      "allow_custom": 0,
+      "allow_in_bindings": 0,
+      "layout": "vertical",
+      "toggle": 0,
+      "save_custom": 0,
+      "custom_choice_button_text": "Add new choice"
+    },
+    {
+      "key": "field_686fc3d78283f",
+      "label": "Custom Banner Image(s)",
+      "name": "header_custom_images",
+      "aria-label": "",
+      "type": "gallery",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_686fc0dd8d1a7",
+            "operator": "==",
+            "value": "custom"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "id",
+      "library": "all",
+      "min": "",
+      "max": "",
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": "",
+      "insert": "append",
+      "preview_size": "medium"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "cd\/header"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1755787866
+}

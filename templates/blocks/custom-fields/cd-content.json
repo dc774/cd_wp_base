@@ -1,0 +1,191 @@
+{
+    "key": "group_68a35547f1e95",
+    "title": "cd-content",
+    "fields": [
+        {
+            "key": "field_68a35548a985c",
+            "label": "Layout",
+            "name": "sidebars",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "<strong>NOTE:<\/strong> Sidebars must contain at least one widget. Empty sidebars will not be displayed. Choose <strong>No Sidebars<\/strong> above to adjust the width of the content area.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "sidebar-left": "Left Sidebar",
+                "sidebar-right": "Right Sidebar",
+                "no-sidebar": "No Sidebar"
+            },
+            "default_value": "sidebar-left",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_68a35602a985d",
+            "label": "Width",
+            "name": "width",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68a35548a985c",
+                        "operator": "==",
+                        "value": "no-sidebar"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "full-width": "Full Width",
+                "article-width": "Article Width"
+            },
+            "default_value": "article-width",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_68ab55562f9ee",
+            "label": "Article Width size",
+            "name": "size",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68a35602a985d",
+                        "operator": "==",
+                        "value": "article-width"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "small": "Small",
+                "medium": "Medium",
+                "large": "Large",
+                "x-large": "Extra Large"
+            },
+            "default_value": "medium",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_68a5e2a0bc833",
+            "label": "Sidebar tinting",
+            "name": "tinting",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Choose sitewide tinting options for the sidebar.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_68ab3968567b1",
+            "label": "Tinting options",
+            "name": "tinting_options",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68a5e2a0bc833",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "edge": "Full tint (to edge of screen)",
+                "fade": "Fade to white"
+            },
+            "default_value": "edge",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "cd\/content"
+            }
+        ],
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "cd\/content-search"
+            }
+        ],
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "cd\/content-404"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1758904948
+}

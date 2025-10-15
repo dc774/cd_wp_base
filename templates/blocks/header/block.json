@@ -1,0 +1,15 @@
+{
+  "name": "cd/header",
+  "title": "CD Site Header",
+  "description": "A customizable site header used in theme templates.",
+  "category": "cd-templates",
+  "icon": "table-row-before",
+  "supports": {
+    "align": false,
+    "jsx": true
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "header.php"
+  }
+}

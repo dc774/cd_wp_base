@@ -1,0 +1,14 @@
+{
+  "name": "cd/sidebar-bottom",
+  "title": "CD Sidebar Bottom",
+  "description": "The secondary sidebar area for pages. Appears below the main content on mobile devices.",
+  "category": "cd-templates",
+  "icon": "align-pull-left",
+  "supports": {
+    "align": false
+  },
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "sidebar-bottom.php"
+  }
+}

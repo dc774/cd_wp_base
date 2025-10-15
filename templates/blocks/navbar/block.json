@@ -1,0 +1,14 @@
+{
+  "name": "cd/navbar",
+  "title": "CD Navbar",
+  "description": "A horizontal navigation bar, typically used for the site's main navigation in the header.",
+  "category": "cd-templates",
+  "icon": "menu-alt3",
+  "supports": {
+    "align": false
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "navbar.php"
+  }
+}

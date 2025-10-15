@@ -1,0 +1,50 @@
+.acf-block-panel input[type=radio]:checked::before {
+  display: none;
+}
+
+h1.components-truncate {
+  font-family: unset;
+}
+
+span.intro {
+  font-size: 1.3333333333em;
+  line-height: 1.4;
+  font-weight: 300;
+  color: #555;
+}
+
+h2.block-editor-inserter__panel-title,
+h2.block-editor-block-card__title,
+h2.components-panel__body-title {
+  font-family: unset;
+}
+
+p {
+  font-family: "freight-sans-pro", sans-serif;
+}
+
+#main-article .no-sidebar div[data-title*=Sidebar] {
+  display: none;
+}
+#main-article .no-sidebar h1#content {
+  margin-bottom: 0.5em;
+}
+#main-article .sidebar-left div[data-title*=Sidebar],
+#main-article .sidebar-right div[data-title*=Sidebar] {
+  display: block;
+}
+
+.components-popover.format-library__inline-color-popover div[role=tablist] button:first-child,
+.components-popover.format-library__inline-color-popover div[role=tabpanel][id*=color-view] {
+  display: none;
+}
+
+.components-popover.format-library__inline-color-popover div[role=tablist] button > span {
+  --fade-width: 0rem !important;
+}
+
+.wp-block-freeform.block-library-rich-text__tinymce.mce-content-body {
+  min-height: 150px;
+}
+
+/*# sourceMappingURL=editor.css.map */

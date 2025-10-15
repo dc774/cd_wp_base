@@ -1,0 +1,14 @@
+{
+  "name": "cd/article",
+  "title": "CD Article",
+  "description": "The article area for pages.",
+  "category": "cd-templates",
+  "icon": "align-center",
+  "supports": {
+    "align": false
+  },
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "article.php"
+  }
+}

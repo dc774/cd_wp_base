@@ -1,0 +1,5 @@
+.acf-block-panel {
+	input[type=radio]:checked::before {
+		display: none;
+	}
+}

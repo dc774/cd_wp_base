@@ -1,0 +1,31 @@
+// CDS Component: Motion Design (pairs with cds_motion.js)
+// ---------------------------------------------------------------------------
+// 01. Fade-in on reveal
+// 02. Slide-up (and fade-in) on reveal
+
+
+// Fade-in on reveal
+.cds-motion-fadein {
+	
+	&.scripted {
+		opacity: 0;
+	}
+	&.revealed {
+		opacity: 1;
+		transition: opacity 0.5s 0.1s linear;
+	}
+}
+
+// Slide-up (and fade-in) on reveal
+.cds-motion-slidein {
+	
+	&.scripted {
+		opacity: 0;
+		transform: translateY(60px);
+	}
+	&.revealed {
+		transform: translateY(0);
+		opacity: 1;
+		transition: transform 0.5s 0.1s ease-out, opacity 0.5s 0.1s linear;
+	}
+}

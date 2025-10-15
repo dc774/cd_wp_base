@@ -1,0 +1,59 @@
+@use "acf";
+
+// Block editor search bar
+h1.components-truncate {
+	font-family: unset;
+}
+
+span.intro {
+	font-size: 1.3333333333em;
+	line-height: 1.4;
+	font-weight: 300;
+	color: #555;
+}
+
+// Block editor headings (left sidebar)
+h2.block-editor-inserter__panel-title,
+h2.block-editor-block-card__title,
+h2.components-panel__body-title {
+	font-family: unset;
+}
+
+p {
+	font-family: 'freight-sans-pro', sans-serif;
+}
+
+// Miscellaneous fixes
+#main-article {
+	.no-sidebar {
+		div[data-title*="Sidebar"] {
+			display: none;
+		}
+		h1 {              // Show/hide sidebars in the editor
+			&#content {
+				margin-bottom: .5em;
+			}
+		}
+	}
+	.sidebar-left,
+	.sidebar-right {
+		div[data-title*="Sidebar"] {
+			display: block;
+		}
+	}
+}
+
+// Remove text color tab in paragraph block settings
+.components-popover.format-library__inline-color-popover div[role="tablist"] button:first-child,
+.components-popover.format-library__inline-color-popover div[role="tabpanel"][id*='color-view'] {
+	display: none;
+}
+.components-popover.format-library__inline-color-popover div[role="tablist"] button > span {
+		--fade-width: 0rem !important; // Can't get rid of that fade for some reason
+}
+
+// Outline freeform block (classic editor)
+.wp-block-freeform.block-library-rich-text__tinymce.mce-content-body {
+	//outline: 1px solid #ddd;
+	min-height: 150px;
+}

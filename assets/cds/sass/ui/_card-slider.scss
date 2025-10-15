@@ -1,0 +1,338 @@
+// CDS Component: UI Card Slider
+// ---------------------------------------------------------------------------
+// Note: default behavior is "max 3" so the "max-3" class is not explicitly specified below
+
+
+.card-slider {
+	position: relative;
+}
+.card-slider.slide-mobile {
+	padding-top: 30px;
+	background: radial-gradient(ellipse at center top, rgba(0,0,0,0.07) 0%,rgba(0,0,0,0) 60%), radial-gradient(ellipse at center bottom, rgba(0,0,0,0.03) 0%,rgba(0,0,0,0) 40%);
+}
+.card-slider.pips-bottom {
+	padding-top: 30px;
+}
+.card-slider.no-background {
+	background: none;
+}
+.card-slider .mask {
+	overflow: hidden;
+	display: flex;
+	flex-direction: row-reverse;
+}
+.card-slider .cards {
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: -15px;
+	margin-right: -15px;
+	padding-bottom: 30px;
+}
+.card-slider.slide-mobile .cards { // At mobile sizes, content is expanded and the slider is inactive unless ".slide-mobile" is included
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	flex-wrap: nowrap;
+	touch-action: pan-y;
+}
+.card-slider.pips-bottom .cards {
+	padding-bottom: 45px;
+}
+.card-slider.slide-mobile.scripted .cards { // If JavaScript is present, the natural overflow scrollbar is removed...
+	overflow-x: hidden !important;
+}
+.card-slider.slide-mobile.scripted.free-scroll .cards { // ...unless the free-scroll option is enabled! (NYI in JavaScript, so this will not update the UI buttons and pips)
+	overflow-x: auto !important;
+}
+.card-slider .card {
+	width: 100%;
+	padding-left: 15px;
+	padding-right: 15px;
+	border: 0;
+	flex: 0 0 auto;
+	margin-bottom: 3em;
+	position: relative;
+}
+.card-slider.slide-mobile .card {
+	margin-bottom: 0;
+}
+.card-slider.min-2 .card {
+	width: 50%;
+}
+
+/* Next and Previous buttons */
+.card-slider-padded {
+	padding: 0 42px;
+}
+.card-slider-padded .card-slider {
+	margin-left: -42px;
+	margin-right: -42px;
+}
+.card-slider-padded .slide-mobile {
+	margin-left: 0;
+	margin-right: 0;
+}
+.card-slider .next-prev {
+	position: absolute;
+	top: 50%;
+	top: calc(50% - 30px);
+	left: 0;
+	width: 100%;
+	display: none;
+}
+.card-slider.slide-mobile .next-prev {
+	display: block;
+}
+.card-slider .next-prev button {
+	-webkit-appearance: none;
+	cursor: pointer;
+	padding: 0;
+	position: absolute;
+	height: 60px;
+	width: 31px;
+	font-size: 32px;
+	background: #000;
+	background: rgba(0,0,0,0.5);
+	color: #fff;
+	border: 0;
+	//border: 1px solid rgba(255,255,255,0.4);
+}
+.card-slider .next-prev button:hover, .card-slider .next-prev button:focus {
+	background: rgba(0,0,0,0.6);
+}
+.card-slider .next-prev button:active {
+	background: rgba(0,0,0,0.9);
+}
+.card-slider .next-prev button:disabled, .card-slider .next-prev button:disabled:hover, .card-slider .next-prev button:disabled:active {
+	background: rgba(0,0,0,0.5);
+	opacity: 0.3;
+	cursor: default;
+}
+.card-slider .prev {
+	left: -20px;
+}
+.card-slider .next {
+	right: -20px;
+}
+.card-slider .next-prev .prev {
+	padding-right: 2px;
+}
+.card-slider .next-prev .next {
+	padding-left: 2px;
+}
+.card-slider .next-prev .fa {
+	line-height: 1.2;
+}
+
+/* Slide Indicator Pips */
+.card-slider .pips {
+	width: 100%;
+	text-align: center;
+	position: relative;
+	top: -45px;
+	display: none;
+}
+.card-slider.slide-mobile .pips {
+	display: block;
+}
+.card-slider .pips button {
+	-webkit-appearance: none;
+	background: none;
+	border: 0;
+	margin: 0;
+	padding: 2px;
+	opacity: 0.2;
+	cursor: pointer;
+}
+.card-slider .pips button:before {
+	content: '';
+	display: block;
+	background: #000;
+	width: 7px;
+	height: 7px;
+	border-radius: 100em;
+}
+.card-slider .pips button:hover, .card-slider .pips button:focus {
+	opacity: 0.5;
+}
+.card-slider .pips button:active, .card-slider .pips button.active {
+	opacity: 1 !important;
+}
+.card-slider.pips-large .pips {
+	top: 52px;
+}
+.card-slider.pips-large .pips button:before {
+	width: 9px;
+	height: 9px;
+}
+.card-slider.pips-bottom {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.card-slider.pips-bottom .pips {
+	order: 3;
+}
+
+
+/* Dark Mode */
+.card-slider.dark .next-prev button, 
+.dark .card-slider .next-prev button {
+	background: rgba(255,255,255,0.12);
+}
+.card-slider.dark .next-prev button:hover, .card-slider.dark .next-prev button:focus, 
+.dark .card-slider .next-prev button:hover, .dark .card-slider .next-prev button:focus {
+	background: rgba(255,255,255,0.2);
+}
+.card-slider.dark .next-prev button:active, 
+.dark .card-slider .next-prev button:active {
+	background: rgba(255,255,255,0.08);
+}
+.card-slider.dark .next-prev button:disabled, .card-slider.dark .next-prev button:disabled:hover, .card-slider.dark .next-prev button:disabled:active, 
+.dark .card-slider .next-prev button:disabled, .dark .card-slider .next-prev button:disabled:hover, .dark .card-slider .next-prev button:disabled:active {
+	background: rgba(255,255,255,0.2);
+	opacity: 0.2;
+}
+.card-slider.dark .pips button:before, 
+.dark .card-slider .pips button:before {
+	background: #fff;
+}
+
+
+
+// ************************************************************************ //
+@media (min-width: 480px) { // EXTRA SMALL GRID ****************** //
+
+.card-slider.max-5 .card {
+	width: 50% !important;
+	margin-bottom: 0;
+}
+.card-slider.max-6 .card {
+	width: 50% !important;
+	margin-bottom: 0;
+}
+
+
+} // ************** //
+// ************************************************************************ //
+@media (min-width: 624px) { // KINDA SMALL GRID ****************** //
+
+.card-slider.max-4 .card {
+	width: 50% !important;
+	margin-bottom: 0;
+}
+.card-slider.max-6 .card {
+	width: 33.333333333333333% !important;
+}
+
+
+
+} // ************** //
+// ************************************************************************ //
+@media (min-width: 768px) { // SMALL GRID ************************ //
+
+.card-slider-padded {
+	padding: 0 60px;
+}
+.card-slider-padded .card-slider {
+	margin-left: 0;
+	margin-right: 0;
+}
+.card-slider {
+	padding-top: 30px;
+	background: radial-gradient(ellipse at center top, rgba(0,0,0,0.10) 0%,rgba(0,0,0,0) 60%), radial-gradient(ellipse at center bottom, rgba(0,0,0,0.04) 0%,rgba(0,0,0,0) 40%);
+}
+.card-slider .prev {
+	left: -60px;
+}
+.card-slider .next {
+	right: -60px;
+}
+.card-slider .cards { // The slider activates at tablet size, for any sliders that didn't have ".slide-mobile" included
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	flex-wrap: nowrap;
+	margin-left: -30px;
+	margin-right: -30px;
+	touch-action: pan-y;
+}
+.card-slider.scripted .cards { // As above, if JavaScript is present, the natural overflow scrollbar is removed...
+	overflow-x: hidden !important;
+}
+.card-slider.scripted.free-scroll .cards { // ...unless the free-scroll option is enabled! (NYI in JavaScript, so this will not update the UI buttons and pips)
+	overflow-x: auto !important;
+}
+.card-slider .card { // max-3 (default)
+	width: 50% !important;
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-bottom: 0;
+}
+.card-slider.max-1 .card, .card-slider.max-2 .card {
+	width: 100% !important;
+}
+
+.card-slider.max-5 .card {
+	width: 33.333333333333333% !important;
+}
+.card-slider.max-6 .card {
+	width: 25% !important;
+}
+
+.card-slider .pips, .card-slider .next-prev {
+	display: block;
+}
+
+} // ************** //
+// ************************************************************************ //
+@media (min-width: 960px) { // MEDIUM GRID *********************** //
+
+.card-slider.max-2 .card {
+	width: 50% !important;
+}
+.card-slider.max-4 .card {
+	width: 33.333333333333333% !important;
+}
+.card-slider.max-5 .card {
+	width: 25% !important;
+}
+.card-slider.max-6 .card {
+	width: 20% !important;
+}
+
+
+} // ************** //
+// ************************************************************************ //
+@media (min-width: 1080px) { // MEDIUM-LARGE GRID ***************** //
+
+.card-slider .card { // max-3 (default)
+	width: 33.333333333333333% !important;
+}
+
+
+} // ************** //
+// ************************************************************************ //
+@media (min-width: 1200px) { // LARGE GRID ************************ //
+
+.card-slider.max-4 .card {
+	width: 25% !important;
+}
+.card-slider.max-5 .card {
+	width: 20% !important;
+}
+.card-slider.max-6 .card {
+	width: 16.666666666666667% !important;
+}
+.card-slider.pips-large .pips {
+	top: -15px;
+}
+.card-slider.pips-large .pips button {
+	padding: 3px;
+}
+.card-slider.pips-large .pips button:before {
+	width: 11px;
+	height: 11px;
+}
+
+} // ************** //

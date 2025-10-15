@@ -1,0 +1,121 @@
+// CDS Component: 16-column Flex Grid (standalone)
+// ---------------------------------------------------------------------------
+
+.flex-grid {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -15px;
+	
+	// The flex-grid layout is rendered at 768px and above. However, a container 
+	// query is used to delay it when the container width is below 600px. As a  
+	// result, the layout begins at 768px in full-width regions, but waits longer 
+	// when constrained by a smaller container (such as when a sidebar is 
+	// present). It also means that nested flex-grids will wait longer, based on 
+	// the size they inhabit.
+	container-type: inline-size;
+	
+	@container (max-width: 599px) {
+		& > * { // maintain mobile design longer
+			width: 100% !important;
+			margin-bottom: 1.5em !important;
+		}
+	}
+	// - //
+	
+	#main .article & {
+		margin-bottom: 1.5em;
+	}
+	
+	& > * {
+		width: 100%;
+		padding: 0 15px; 
+	}
+	
+	@media (min-width: 768px) {
+		& > * {
+			margin-bottom: 1.5em;
+		}
+		& > hr {
+			margin: 0 15px 1.5em;
+		}
+		&.collapse-cols {
+			margin-left: 0;
+			margin-right: 0;
+		}
+		&.collapse-rows > * {
+			margin-bottom: 0;
+		}
+		&.compact-rows > * {
+			margin-bottom: 0.35em;
+		}
+		&.collapse-cols > * {
+			padding: 0;
+		}
+		&.collapse-cols > hr {
+			margin-left: 0;
+			margin-right: 0;
+		}
+		&.padded > * {
+			padding-top: 15px;
+			padding-bottom: 15px;
+		}
+		
+		& > .flex-1 { width: 8.333333333333333%; }
+		& > .flex-2 { width: 16.666666666666667%; }
+		& > .flex-3 { width: 25%; }
+		& > .flex-4 { width: 33.333333333333333%; }
+		& > .flex-5 { width: 41.666666666666667%; }
+		& > .flex-6 { width: 50%; }
+		& > .flex-7 { width: 58.333333333333333%; }
+		& > .flex-8 { width: 66.666666666666667%; }
+		& > .flex-9 { width: 75%; }
+		& > .flex-10 { width: 83.333333333333333%; }
+		& > .flex-11 { width: 91.666666666666667%; }
+		& > .flex-1-5 { width: 20%; }
+		& > .flex-1-8 { width: 12.5%; }
+		
+// 		form & > [class*='flex-'] {
+// 			width: 100%;
+// 			margin-bottom: 1.5em;
+// 		}
+	}
+	
+// 	@media (min-width: 1024px) {
+// 		form & {
+// 			& > .flex-1 { width: 8.333333333333333%; }
+// 			& > .flex-2 { width: 16.666666666666667%; }
+// 			& > .flex-3 { width: 25%; }
+// 			& > .flex-4 { width: 33.333333333333333%; }
+// 			& > .flex-5 { width: 41.666666666666667%; }
+// 			& > .flex-6 { width: 50%; }
+// 			& > .flex-7 { width: 58.333333333333333%; }
+// 			& > .flex-8 { width: 66.666666666666667%; }
+// 			& > .flex-9 { width: 75%; }
+// 			& > .flex-10 { width: 83.333333333333333%; }
+// 			& > .flex-11 { width: 91.666666666666667%; }
+// 			& > .flex-1-5 { width: 20%; }
+// 			& > .flex-1-8 { width: 12.5%; }
+// 		}
+// 	}
+	
+	// Demo mode for debugging
+	&.demo-mode {
+		outline: 1px dashed rgba(#828282,0.6);
+		outline-offset: -1px;
+	}
+	&.demo-mode > *:nth-child(5n+1), &.demo-mode & > *:nth-child(5n+5) {
+		background: rgba(#da0000,0.2);
+	}
+	&.demo-mode > *:nth-child(5n+2), &.demo-mode & > *:nth-child(5n+4) {
+		background: rgba(#00da3e,0.2);
+	}
+	&.demo-mode > *:nth-child(5n+3) {
+		background: rgba(#c300da,0.2);
+	}
+	&.demo-mode > *:nth-child(5n+4), &.demo-mode & > *:nth-child(5n+2) {
+		background: rgba(#da9a00,0.2);
+	}
+	&.demo-mode > *:nth-child(5n+5), &.demo-mode & > *:nth-child(5n+1) {
+		background: rgba(#0090da,0.2);
+	}
+}

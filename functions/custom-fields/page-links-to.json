@@ -1,0 +1,42 @@
+{
+    "key": "group_68dd3d5b1eb52",
+    "title": "Page Links To",
+    "fields": [
+        {
+            "key": "field_68dd3d5b8b325",
+            "label": "Link",
+            "name": "page_links_to",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Point this page to another page within your site or to an external URL.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "allow_in_bindings": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1759779273
+}

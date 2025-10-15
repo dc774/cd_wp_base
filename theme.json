@@ -1,0 +1,134 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"settings": {
+		"layout": {
+			"contentSize": "846px",
+			"wideSize": "1320px"
+		},
+		"color": {
+			"custom": false,
+			"customDuotone": false,
+			"customGradient": false,
+			"defaultGradients": false,
+			"defaultPalette": false,
+			"palette": [
+				{
+					"name": "Primary Red",
+					"slug": "red",
+					"color": "#b31b1b"
+				},
+				{
+					"name": "Primary Black",
+					"slug": "black",
+					"color": "#000000"
+				},
+				{
+					"name": "Primary White",
+					"slug": "white",
+					"color": "#ffffff"
+				},
+				{
+					"name": "Primary Blue",
+					"slug": "blue",
+					"color": "#006699"
+				},
+				{
+					"name": "Secondary Navy",
+					"slug": "navy",
+					"color": "#073949"
+				},
+				{
+					"name": "Gray",
+					"slug": "gray",
+					"color": "#60646a"
+				},
+				{
+					"name": "Light Gray",
+					"slug": "light-gray",
+					"color": "#efefef"
+				},
+				{
+					"name": "Medium Gray",
+					"slug": "medium-gray",
+					"color": "#dbdbdb"
+				},
+				{
+					"name": "Dark Gray",
+					"slug": "dark-gray",
+					"color": "#2b2b2b"
+				}
+			]
+		},
+		"blocks": {
+			"core/paragraph": {
+				"color": {
+					"text": false,
+					"background": true,
+					"custom": false,
+					"palette": [
+						{
+							"name": "Highlight Yellow",
+							"slug": "",
+							"color": "#ff0"
+						},
+						{
+							"name": "Highlight Red",
+							"slug": "text-highlight-red",
+							"color": "#f2cac3"
+						},
+						{
+							"name": "Highlight Green",
+							"slug": "text-highlight-green",
+							"color": "#d0f1b1"
+						},
+						{
+							"name": "Highlight Gold",
+							"slug": "text-highlight-yellow",
+							"color": "#f3f1b2"
+						},
+						{
+							"name": "Highlight Blue",
+							"slug": "text-highlight-blue",
+							"color": "#c3e9f2"
+						},
+						{
+							"name": "Highlight Purple",
+							"slug": "text-highlight-purple",
+							"color": "#e1caf4"
+						}
+					]
+				}
+			}
+		}
+	},
+	"customTemplates": [
+		{
+			"name": "page-no-sidebars",
+			"title": "Page (No Sidebars)",
+			"postTypes": ["page"]
+		}
+	],
+	"templateParts": [
+		{
+			"name": "header",
+			"title": "Header",
+			"area": "header"
+		},
+		{
+			"name": "sidebar-top",
+			"title": "Sidebar (Top)",
+			"area": "sidebar"
+		},
+		{
+			"name": "sidebar-bottom",
+			"title": "Sidebar (Bottom)",
+			"area": "sidebar"
+		},
+		{
+			"name": "footer",
+			"title": "Footer",
+			"area": "footer"
+		}
+	]
+}

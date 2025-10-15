@@ -1,0 +1,280 @@
+{
+  "key": "group_6888cf13e7f69",
+  "title": "cd-navbar",
+  "fields": [
+    {
+      "key": "field_6888cf145ad34",
+      "label": "Override Main Menu",
+      "name": "navbar_use_custom_menu",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "By default this navbar will display the main menu of the site, but you can choose a different menu by selecting this field.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "Use custom menu",
+      "default_value": 0,
+      "allow_in_bindings": 0,
+      "ui": 0,
+      "ui_on_text": "",
+      "ui_off_text": ""
+    },
+    {
+      "key": "field_6888d0185ad35",
+      "label": "Menu to Display",
+      "name": "navbar_custom_menu",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "The name of the menu you would like to display in place of the main menu. To get the menu name, visit <a href=\"\/wp-admin\/nav-menus.php\">Appearance > Menus<\/a> and copy the text from the \"Menu Name\" field.",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_6888cf145ad34",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_6888d184c372e",
+      "label": "Menu Position",
+      "name": "navbar_position",
+      "aria-label": "",
+      "type": "radio",
+      "instructions": "Where should the menu items be positioned on desktop screens?",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "left": "Left",
+        "center": "Center",
+        "right": "Right"
+      },
+      "default_value": "",
+      "return_format": "value",
+      "allow_null": 0,
+      "other_choice": 0,
+      "allow_in_bindings": 0,
+      "layout": "vertical",
+      "save_other_choice": 0
+    },
+    {
+      "key": "field_6888d2badea9b",
+      "label": "Menu Item Spacing",
+      "name": "navbar_spacing",
+      "aria-label": "",
+      "type": "radio",
+      "instructions": "How should the menu items be spaced out?",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_6888d184c372e",
+            "operator": "==",
+            "value": "center"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "normal": "Normal",
+        "even": "Evenly spaced",
+        "between": "Expanded to fill page width"
+      },
+      "default_value": "normal",
+      "return_format": "value",
+      "allow_null": 0,
+      "other_choice": 0,
+      "allow_in_bindings": 0,
+      "layout": "vertical",
+      "save_other_choice": 0
+    },
+    {
+      "key": "field_6888d5316bdf2",
+      "label": "Background Color",
+      "name": "navbar_bg",
+      "aria-label": "",
+      "type": "radio",
+      "instructions": "The background color of the navbar.",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "none": "None",
+        "gray": "Light gray",
+        "dark-gray": "Dark gray",
+        "dark-fill-gradient": "Dark gray gradient",
+        "dark-red": "Red",
+        "dark-blue": "Blue"
+      },
+      "default_value": "none",
+      "return_format": "value",
+      "allow_null": 0,
+      "other_choice": 0,
+      "allow_in_bindings": 0,
+      "layout": "vertical",
+      "save_other_choice": 0
+    },
+    {
+      "key": "field_6888e247ec85f",
+      "label": "Theme",
+      "name": "navbar_theme",
+      "aria-label": "",
+      "type": "radio",
+      "instructions": "When the navbar has no background color, it will appear the same color as the section it's placed within. Does this section have a dark or light background color?",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_6888d5316bdf2",
+            "operator": "==",
+            "value": "none"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "light": "Light",
+        "dark": "Dark"
+      },
+      "default_value": "",
+      "return_format": "value",
+      "allow_null": 0,
+      "other_choice": 0,
+      "allow_in_bindings": 0,
+      "layout": "vertical",
+      "save_other_choice": 0
+    },
+    {
+      "key": "field_6888e3c9f13cc",
+      "label": "Height",
+      "name": "navbar_tall",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "With normal height, the menu items will fill the entire navbar vertically; in tall navbars, there will be a little space above and below the menu items.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "Tall navbar",
+      "default_value": 0,
+      "allow_in_bindings": 0,
+      "ui": 0,
+      "ui_on_text": "",
+      "ui_off_text": ""
+    },
+    {
+      "key": "field_6888e613676df",
+      "label": "Active Item Color",
+      "name": "navbar_active_red",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "This option is not available when the navbar background is red.",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_6888d5316bdf2",
+            "operator": "!=",
+            "value": "dark-red"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "Red background for active menu item",
+      "default_value": 0,
+      "allow_in_bindings": 0,
+      "ui": 0,
+      "ui_on_text": "",
+      "ui_off_text": ""
+    },
+    {
+      "key": "field_6888e6683eb58",
+      "label": "Hover Color",
+      "name": "navbar_hover_red",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "This option is not available when the navbar background is red.",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_6888d5316bdf2",
+            "operator": "!=",
+            "value": "dark-red"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "Red background when user hovers over menu item",
+      "default_value": 0,
+      "allow_in_bindings": 0,
+      "ui": 0,
+      "ui_on_text": "",
+      "ui_off_text": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "cd\/navbar"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1755787917
+}

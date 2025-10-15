@@ -1,0 +1,46 @@
+{
+  "key": "group_68642a7f62a4c",
+  "title": "cd-breadcrumb",
+  "fields": [
+    {
+      "key": "field_68642a7f0ff5d",
+      "label": "Show current page",
+      "name": "show_current_page",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "Show or hide the current page from the breadcrumb.  The current page is not linked to in the breadcrumb.",
+      "default_value": 1,
+      "allow_in_bindings": 0,
+      "ui": 0,
+      "ui_on_text": "",
+      "ui_off_text": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "cd\/breadcrumb"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1754337106
+}

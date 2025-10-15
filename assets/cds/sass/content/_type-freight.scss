@@ -1,0 +1,48 @@
+// CDS Component: Implement Cornell's Freight font families
+// ---------------------------------------------------------------------------
+
+// Freight Sans Pro
+body, .base-font, h4, h5, h6, .h4, .h5, .h6 {
+	font-family: 'freight-sans-pro', sans-serif;
+}
+.sans {
+	font-family: 'freight-sans-pro', sans-serif;
+}
+input, select, textarea {
+	font-family: inherit;
+}
+
+// Freight Text (comment out to use only Sans)
+h1, h2, h3, .h1, .h2, .h3 {
+	font-family: 'freight-text-pro', serif;
+	font-weight: 400;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: auto;
+}
+.serif,  
+blockquote.offset, 
+blockquote.impact, 
+fieldset.semantic > legend, 
+ol.custom > li:before, 
+ol.custom.recursive ol > li:before {
+	font-family: 'freight-text-pro', serif;
+	font-weight: 400;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: auto;
+}
+@media (min-width: 960px) {
+	.dropdown-megamenu.megamenu-headings .top-level-li > .children > li > a {
+		font-family: 'freight-text-pro', serif;
+		font-weight: 400;
+		-webkit-font-smoothing: subpixel-antialiased;
+		-moz-osx-font-smoothing: auto;
+	}
+}
+.journal { 
+	font-family: 'freight-text-pro', serif;
+}
+
+strong, b, th {
+	font-weight: 600;
+}
+

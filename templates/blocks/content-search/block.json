@@ -1,0 +1,14 @@
+{
+  "name": "cd/content-search",
+  "title": "CD Search Results",
+  "description": "Displays search results for the queried object.",
+  "category": "cd-templates",
+  "icon": "search",
+  "supports": {
+    "align": false
+  },
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "content-search.php"
+  }
+}

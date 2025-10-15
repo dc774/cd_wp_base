@@ -1,0 +1,46 @@
+// Cornell Design System: Base Theme
+// ---------------------------------------------------------------------------
+// Recommended breakpoints to match those used most prominently in this theme:
+// Minumum size is assumed to be 320px (classic 3.5" phones)
+// @media (min-width: 360px) - modern phones begin
+// @media (min-width: 412px) - large phones begin (commonly ranging as high as 440px)
+// @media (min-width: 768px) - tablet (portrait) begins, most multi-column layouts begin
+// @media (min-width: 960px) - desktop main navigation begins
+// @media (min-width: 1024px) - extra-large or landscape tablet, and compact desktop
+// @media (min-width: 1200px) - roughly full-sized desktop
+// @media (min-width: 1440px) - maximum content width (1320px plus padding) begins
+
+:root {
+	--cu-red: #b31b1b; // unused (just for testing native CSS variable use)
+}
+
+// Required Components
+@import "base/utility"; // utility classes, animations, future mixins
+@import "base/content"; // typography, lists, tables, semantic content
+@import "base/layout"; // branding, footer, navigations, basic layout systems
+@import "base/ui"; // forms, buttons, notifications (may move), basic dialogs
+
+// Optional Components
+@import "layout/flex-grid"; // 12-column flexbox grid
+@import "layout/cards"; // card layouts
+// @TODO: add cool layouts that the team builds over time...
+@import "ui/tabs"; // tablists
+@import "ui/accordions"; // details tag, mobile expanders
+@import "ui/modal"; // modal dialog
+@import "ui/back-to-top"; // floating back-to-top button
+@import "ui/megamenu"; // megamenu
+@import "ui/slider"; // slider (hero carousel)
+@import "ui/card-slider"; // card slider
+@import "ui/tooltips"; // tooltips
+@import "ui/motion"; // motion design
+@import "ui/experimental"; // experimental components like the Dynamic Table of Contents used in documentation
+// @TODO: port over remaining CSS Framework components
+@import "content/fields"; // CMS fields for Drupal and WordPress
+@import "content/callouts"; // Basic callout blocks
+@import "content/type-freight"; // Freight Sans and Freight Text
+// @TODO: add news, events, etc...
+//@import "utility/legacy-bridge"; // partial backwards compatibility for pre-2024 sites (experimental)
+@import "utility/cms"; // Drupal and WordPress CMS elements
+
+// Project Styles
+// ...

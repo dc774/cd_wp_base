@@ -1,0 +1,419 @@
+// CDS Component: UI Image Slider
+// ---------------------------------------------------------------------------
+
+.cds-slider {
+	background: #444;
+	background-image: none !important;
+	color: #fff;
+	width: 100%;
+	min-height: 400px;
+	height: 40vw;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	
+	&:after {
+		@extend .stunt-double;
+		content: '';
+		z-index: 3;
+		background: linear-gradient(to bottom, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.6) 100%);
+	}
+	
+	.slider-ui {
+		position: relative;
+		z-index: 4;
+		flex-grow: 1000;
+		display: flex;
+		flex-direction: column;
+		
+		.container {
+			flex-grow: 1000;
+			display: flex;
+			flex-direction: column;
+			padding: 0 15px;
+		
+			@media (min-width: 1024px) {
+				padding: 0 30px;
+			}
+		}
+	}
+	
+	.slider-caption {
+		position: relative;
+		z-index: 4;
+		flex-grow: 1000;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+	
+	.image-loader, .slide-data, a:empty {
+		display: none;
+	}
+	
+	.slide-buffer {
+		@extend .stunt-double-lite;
+		background: transparent 50% 15% no-repeat;
+		background-size: cover;
+		z-index: -1;
+		
+		&.current-slide {
+			z-index: 1;
+		}
+		&.incoming-slide {
+			z-index: 2;
+		}
+	}
+	
+	.caption-inner {
+		background: rgba(#111,0.65);
+		color: #ededed;
+		padding: 15px;
+		min-width: 260px;
+		max-width: calc(100% - 30px);
+		position: absolute;
+		top: 15px;
+		z-index: -1;
+		opacity: 0;
+		-webkit-font-smoothing: subpixel-antialiased;
+		-webkit-backface-visibility: hidden;
+		transition: opacity 0.2s;
+		
+		@media (min-width: 1024px) {
+			top: 30px;
+			min-width: 300px;
+			max-width: 480px;
+		}
+		
+		&.active {
+			z-index: 5;
+			opacity: 1;
+			transition: opacity 0.2s linear 0.6s;
+		}
+		
+		a:not(.link-button) {
+			color: #fff;
+			text-decoration: none;
+			text-decoration-thickness: 1px;
+			text-underline-offset: 0.125em;
+			text-decoration-color: rgba(255,255,255,0.6);
+			
+			&:hover {
+				text-decoration: underline;
+			}
+			&:active {
+				color: #ddd;
+				text-decoration-color: rgba(255,255,255,0.4);
+			}
+		}
+	}
+	.quick .caption-inner {
+		transition: opacity 0.08s;
+		
+		&.active {
+			transition: opacity 0.08s linear 0.24s;
+		}
+	}
+	
+	.empty a.caption-focus {
+		display: block;
+		min-width: 30px;
+		min-height: 28px;
+		text-align: center;
+		
+		&:focus {
+			min-height: 1px;
+		}
+	}
+	
+	h2 {
+		margin-bottom: 0.4em;
+		
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	
+	// Block spacing, when placed as an element within the main page content
+	main & {
+		max-height: 580px;
+		margin-bottom: 2em;
+		
+		@supports (aspect-ratio: 846/580) {
+			height: auto;
+			max-height: none;
+			aspect-ratio: 846/580;
+		}
+	}
+	
+	// A banner design, when placed on the site header
+	#header &, &#header {
+		height: 40vw;
+		
+		@media (min-width: 768px) {
+			min-height: 520px;
+			height: 50vw;
+			max-height: 80vh;
+		}
+		@media (min-width: 1024px) {
+			min-height: 620px;
+		}
+		
+		@media (min-width: 1200px) {
+			.slider-ui .container {
+				padding: 0 60px;
+			}
+			.campaign-nav {
+				margin: 60px 0;
+			}
+			h2 {
+				font-size: 1.8em;
+			}
+		}
+		
+		.cu-header {
+			position: relative;
+			z-index: 5;
+		}
+		
+		.caption-inner {
+			top: auto;
+			bottom: 30px;
+			
+			@media (min-width: 768px) {
+				bottom: calc(3.6em + 3%);
+			}
+			@media (min-width: 1024px) {
+				bottom: calc(15px + 3.6em + 3%);
+			}
+			@media (min-width: 1200px) {
+				bottom: calc(45px + 3.6em + 3%);
+			}
+		}
+		
+		@media (max-width: 767px) {
+			&:after {
+				background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.65) 100%), linear-gradient(215deg, rgba(21,103,166,0.5) 0%, rgba(21,103,166,0) 75%);
+			}
+			.cu-header {
+				background: none;
+			}
+			.slider-caption {
+				align-items: center;
+				justify-content: flex-start;
+			}
+			.cta-buttons {
+				justify-content: center;
+			}
+			.caption-inner {
+				font-size: 14px;
+				padding: 0;
+				background: none;
+				text-align: center;
+				
+				h2 {
+					font-size: 1.3em;
+				}
+			}
+			.campaign-nav {
+				width: calc(100% + 10px);
+				margin: 0 -5px 17px;
+				
+				.next-prev {
+				 	width: 100%;
+				 	
+				 	a {
+						background: none;
+						width: 2.4em;
+						height: 2.4em;
+						padding: 0;
+						
+						&:hover {
+							background: rgba(#fff,0.15);
+						}
+						&:active {
+							opacity: 0.7;
+						}
+						
+						&:last-child {
+							float: right;
+						}
+						.fa {
+							font-size: 21px;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	// Navigation UI
+	.campaign-nav {
+		z-index: 4;
+		display: flex;
+		margin: 15px 0;
+		font-size: 10px; // standardize for em sizing
+		
+		@media (min-width: 1024px) {
+			margin: 30px 0;
+		}
+		
+		.next-prev {
+			white-space: nowrap;
+			
+			a {
+				min-width: unset;
+				width: 3.6em;
+				height: 3.6em;
+				
+				&:first-child {
+					margin-right: 2px;
+				}
+				
+				.fa {
+					font-size: 24px;
+					margin: 0;
+					
+					&.fa-angle-right {
+						padding-left: 0.05em;
+					}
+				}
+			}
+		}
+		ul {
+			@extend .lnum;
+			list-style: none;
+			margin: 0 0 0 15px;
+			display: none;
+			
+			@media (min-width: 768px) {
+				display: flex;
+			}
+			
+			a {
+				padding: 5px; // ensure 24 pixel minimum target area for slide pips (14px + 5px + 5px)
+			}
+		}
+		li {
+			display: flex;
+			align-items: center;
+			height: 3.6em;
+			margin: 0;
+		}
+		.num {
+			@extend .sr-only;
+		}
+		.dot {
+			display: block;
+			width: 1.4em;
+			height: 1.4em;
+			line-height: 1.4;
+			background: rgba(0,0,0,0.5);
+			box-shadow: 0 0 0 1px rgba(255,255,255,0.5);
+			border-radius: 100em;
+		}
+		a:hover .dot, 
+		a:focus .dot {
+			background: rgba(0,0,0,0.8);
+		}
+		a.active .dot {
+			background: #fff !important;
+			box-shadow: 0 0 0 1px rgba(255,255,255,1), 0 0 0 2px rgba(0,0,0,0.5);
+		}
+		.active .sr-only:after {
+			content: ' (current slide)';
+		}
+	}
+	
+	// right-aligned nav buttons
+	&.nav-right .campaign-nav, .nav-right .campaign-nav {
+		flex-direction: row-reverse;
+		
+		ul {
+			margin: 0 15px 0 0;
+		}
+	}
+	
+	// right-aligned captions
+	&.captions-right .caption-inner, .captions-right .caption-inner {
+		right: 0;
+	}
+	
+	// centered captions and/or nav buttons
+	&.captions-center .caption-inner, .captions-center .caption-inner, 
+	&.captions-center .campaign-nav, .captions-center .campaign-nav {
+		@media (min-width: 768px) {
+			align-self: center;
+			text-align: center;
+		
+			.cta-buttons {
+				justify-content: center;
+			
+				.link-button {
+					margin-left: 0.25em;
+				}
+			}
+		}
+	}
+}
+
+
+// Photo Credits
+
+.photo-credits {
+ .caption-focus {
+		position: relative;
+	}
+	.photo-credit-icon {
+		position: absolute;
+		right: 0;
+		bottom: -2px;
+		z-index: 1;
+		font-size: 18px;
+		background: rgba(0,0,0,0.5);
+		width: 28px;
+		line-height: 28px;
+		text-align: center;
+		border-radius: 2px;
+		opacity: 0.7;
+		transition: opacity 0.1s;
+		cursor: help;
+	}
+	.photo-credit-icon:hover, 
+	.photo-credit-icon:focus, 
+	.caption-focus:focus .photo-credit-icon, 
+	.caption-focus:hover .photo-credit-icon {
+		opacity: 1;
+	}
+	.photo-credit-text, 
+	.caption-focus:focus .photo-credit-text {
+		opacity: 1;
+		transition: opacity 0.1s 0.2s;
+		padding-right: 38px;
+	}
+	.photo-credit-text.off {
+		opacity: 0;
+		transition: opacity 0.1s 0.4s;
+	}
+	.photo-credit-text p {
+		text-transform: none;
+	}
+	.empty .photo-credit-icon {
+		display: none;
+	}
+}
+
+// Extra Heading Animation
+@keyframes extra-heading-fade-in {
+	0% { opacity: 0; }
+	75% { opacity: 0; }
+	100% { opacity: 1; }
+}
+.extra-heading-animate {
+	animation-name: extra-heading-fade-in;
+	animation-duration: 0.8s;
+	
+	&.quick {
+		animation-duration: 0.32s;
+	}
+}

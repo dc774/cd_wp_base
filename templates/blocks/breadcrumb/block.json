@@ -1,0 +1,14 @@
+{
+  "name": "cd/breadcrumb",
+  "title": "CD Breadcrumb",
+  "description": "Breadcrumb navigation used in templates.",
+  "category": "cd-templates",
+  "icon": "ellipsis",
+  "supports": {
+    "align": false
+  },
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "breadcrumb.php"
+  }
+}
